@@ -1,4 +1,7 @@
 import { styled } from "styled-components";
+import ScoreBoard from "../Score";
+import PropTypes from "prop-types";
+
 
 const HeaderContainer = styled.div`
   display: flex;
@@ -27,7 +30,7 @@ const HeaderText = styled.div`
 `
 
 
-function Header() {
+function Header({userScore}) {
   return (
     <HeaderContainer>
       <HeaderStyled>
@@ -38,11 +41,15 @@ function Header() {
         </HeaderText>
         <div className="score">
             <h3>score</h3>
-            <h2>15</h2>
+            <ScoreBoard score={userScore}/>
         </div>
       </HeaderStyled>
     </HeaderContainer>
   );
 }
+
+Header.propTypes = {
+  userScore: PropTypes.number.isRequired,
+};
 
 export default Header;
